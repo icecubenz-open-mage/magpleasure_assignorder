@@ -26,7 +26,7 @@
  * @license    http://www.magpleasure.com/LICENSE-CE.txt
  */
 
-class Magpleasure_Assignorder_Model_Mysql4_History_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Magpleasure_Assignorder_Model_Mysql4_History_Collection extends Magpleasure_Assignorder_Model_Mysql4_History_Abstract
 {
     protected $_last = null;
 
