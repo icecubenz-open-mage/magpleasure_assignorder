@@ -46,11 +46,7 @@ try {
     ");
 
 } catch (Exception $e) {
-    /** @var Magpleasure_Common_Helper_Data $helper */
-    $helper = Mage::helper('magpleasure');
-    $helper->getException()->logException($e);
+  Mage::logException($e);
 }
 
 $installer->endSetup();
-
-
