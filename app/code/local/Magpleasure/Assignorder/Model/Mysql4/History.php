@@ -26,7 +26,7 @@
  * @license    http://www.magpleasure.com/LICENSE-CE.txt
  */
 
-class Magpleasure_Assignorder_Model_Mysql4_History extends Magpleasure_Common_Model_Resource_Abstract
+class Magpleasure_Assignorder_Model_Mysql4_History extends Mage_Core_Model_Mysql4_Abstract
 {
     public function _construct()
     {
