@@ -12,6 +12,11 @@ Assign Order to Customer - is a tool that allows you to assign any order to any 
 * Order Assignment email notification to customer and administrator
 
 
+## Differences from upstream
+
+* `Magpleasure_Common` and `Magpleasure_Info` _helper_ modules has been removed. Required code has been cherry-picked and introduced directly into this module.
+
+
 ## Credits, license and copyright
 
 This extension was originally developed by Magpleasure.
