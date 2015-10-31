@@ -61,7 +61,7 @@ class Magpleasure_Assignorder_Model_Observer
 
                 if ($order->isGuestOrder() && $this->_helper()->isAllowed()) {
 
-                    $url = $this->_getBackendUrlModel()->getUrl('assignorder/order/customerSelect', array(
+                    $url = $this->_getBackendUrlModel()->getUrl('adminhtml/assignorder_order/customerSelect', array(
                         'order_id' => $order->getId(),
                     ));
 
@@ -73,7 +73,7 @@ class Magpleasure_Assignorder_Model_Observer
 
                 } else {
 
-                    $url = $this->_getBackendUrlModel()->getUrl('assignorder/order/customerSelect', array(
+                    $url = $this->_getBackendUrlModel()->getUrl('adminhtml/assignorder_order/customerSelect', array(
                         'order_id' => $order->getId(),
                     ));
 
@@ -115,7 +115,7 @@ class Magpleasure_Assignorder_Model_Observer
                 $backendUrl = Mage::getSingleton('adminhtml/url');
                 $block->addItem('assign', array(
                     'label' => $this->_helper()->__("Assign to Customer"),
-                    'url' => $backendUrl->getUrl('assignorder/order/customerSelect')
+                    'url' => $backendUrl->getUrl('adminhtml/assignorder_order/customerSelect')
                 ));
             }
         }

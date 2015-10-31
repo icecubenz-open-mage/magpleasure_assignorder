@@ -7,13 +7,13 @@
     </modules>
     <admin>
         <routers>
-            <assignorder>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>Magpleasure_Assignorder</module>
-                    <frontName>assignorder</frontName>
+                    <modules>
+                        <assignorder before="Mage_Adminhtml">Magpleasure_Assignorder_Adminhtml</assignorder>
+                    </modules>
                 </args>
-            </assignorder>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>

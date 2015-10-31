@@ -26,7 +26,7 @@
  * @license    http://www.magpleasure.com/LICENSE-CE.txt
  */
 
-class Magpleasure_Assignorder_OrderController extends Mage_Adminhtml_Controller_Action
+class Magpleasure_Assignorder_Adminhtml_Assignorder_OrderController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Acl check for admin

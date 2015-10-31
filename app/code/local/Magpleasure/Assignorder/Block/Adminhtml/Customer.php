@@ -68,7 +68,7 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer extends Mage_Adminhtml_Bl
             ));
         }
 
-        $resetUrl = $this->getUrl('assignorder/order/customerSelect', array(
+        $resetUrl = $this->getUrl('adminhtml/assignorder_order/customerSelect', array(
             'order_id' => $this->getRequest()->getParam('order_id'),
         ));
         $this->addButton('back', array(

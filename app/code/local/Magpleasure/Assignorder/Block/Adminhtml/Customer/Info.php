@@ -65,7 +65,7 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Info extends Mage_Adminht
 
     public function getAssignUrl()
     {
-        return $this->getUrl('assignorder/order/assignToCustomer');
+        return $this->getUrl('adminhtml/assignorder_order/assignToCustomer');
     }
 
     public function getOrderIds()

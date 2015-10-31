@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-    <assignorder_order_customerselect>
+    <adminhtml_assignorder_order_customerselect>
         <reference name="head">
             <action method="addCss"><script>assignorder/css/styles.css</script></action>
             <action method="addItem"><type>js_css</type><script>prototype/windows/themes/default.css</script></action>
@@ -10,7 +10,7 @@
             <block type="assignorder/adminhtml_customer" as="assignorder_customer" name="assignorder.customer" />
             <block type="assignorder/adminhtml_customer_info" as="assignorder_customer_info" name="assignorder.customer.info" />
         </reference>
-    </assignorder_order_customerselect>
+    </adminhtml_assignorder_order_customerselect>
     <adminhtml_sales_order_view>
         <reference name="head">
             <action method="addCss"><script>assignorder/css/styles.css</script></action>

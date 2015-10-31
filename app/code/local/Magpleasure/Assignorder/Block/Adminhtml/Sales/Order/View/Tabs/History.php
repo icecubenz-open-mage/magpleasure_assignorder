@@ -123,7 +123,7 @@ class Magpleasure_Assignorder_Block_Adminhtml_Sales_Order_View_Tabs_History exte
 
     public function getRollbackUrl()
     {
-        return $this->getUrl('assignorder/order/rollback', array('order_id' => '{{order_id}}'));
+        return $this->getUrl('adminhtml/assignorder_order/rollback', array('order_id' => '{{order_id}}'));
     }
 
     public function getRollbackButtonHtml()
