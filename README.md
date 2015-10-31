@@ -14,7 +14,10 @@ Assign Order to Customer - is a tool that allows you to assign any order to any 
 
 ## Differences from upstream
 
-* `Magpleasure_Common` and `Magpleasure_Info` _helper_ modules has been removed. Required code has been cherry-picked and introduced directly into this module.
+* The Adminhtml router, layout and controllers modified to work with [SUPEE-6788](http://magento.com/security/patches/supee-6788-technical-details).
+
+* `Magpleasure_Common` and `Magpleasure_Info` _helper_ modules has been removed. Required code has been cherry-picked and introduced directly into this module.  
+These were removed as the introduce a lot of code and several libraries that were unused, they also needed patching for SUPEE-6788 - outside of the context of support from Magpleasure I have deemed it more efficient to remove these rather than update them.
 
 
 ## Credits, license and copyright
