@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Magpleasure_Info>
-            <active>true</active>
-            <codePool>local</codePool>
-        </Magpleasure_Info>
-    </modules>
-</config> 
