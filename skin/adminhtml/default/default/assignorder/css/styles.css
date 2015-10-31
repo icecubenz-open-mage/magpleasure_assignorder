@@ -1,0 +1,93 @@
+.assignorder-dialog { height: 96px; padding: 10px; }
+.assignorder-message { height: 60px; }
+.assignorder-checkboxes { margin-top: 10px; }
+.assignorder-checkboxes .line { margin-bottom: 3px; }
+.assignorder-checkboxes input.checkbox { margin-right: 5px; }
+
+.assignorder-message .order span {
+    display: block;
+    margin-top: 7px;
+}
+
+.assignorder-message .order {
+    float: left;
+    text-align: center;
+    width: 130px;
+}
+
+.assignorder-message .arrow {
+    float: left;
+    width: 20px;
+    background: url('../images/assign.png') no-repeat scroll 12px 13px transparent;
+}
+
+.assignorder-message .arrow.rollback {
+    background: url('../images/unassign.png') no-repeat scroll 5px 12px transparent;
+}
+.assignorder-message .customer {
+    float: right;
+    text-align: center;
+    width: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.assignorder-message .order,
+.assignorder-message .customer {
+    background: none repeat scroll 0 0 #FCFAC9;
+    border: 1px solid #D7C699 !important;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.assignorder-message .customer .left-hover {
+    width: 10px;
+    height: 50px;
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    background: url("../images/cover-left.png") repeat-y scroll 0 0 transparent;
+}
+.assignorder-message .customer .right-hover {
+    width: 10px;
+    height: 50px;
+    position: absolute;
+    display: block;
+    right: -1px;
+    top: 0;
+    background: url("../images/cover-right.png") repeat-y scroll 0 0 transparent;
+}
+
+.assignorder-message .order,
+.assignorder-message .arrow,
+.assignorder-message .customer {
+    height: 36px;
+    padding: 5px;
+}
+
+.assignorder-message .order {
+    padding-bottom: 3px;
+    padding-top: 8px;
+}
+
+.fixed { clear: both; }
+
+body.adminhtml-sales-order-view #overlay_modal, body.assignorder-order-customerselect #overlay_modal {
+    z-index: 101 !important;
+}
+
+#mp_assignorder_dialog {
+    z-index: 102 !important;
+}
+
+button.scalable.assign-order span {
+    background: url("../images/user.png") no-repeat scroll 0 1px transparent;
+    padding-left: 16px;
+}
+
+button.scalable.rollback.delete span {
+    background: url("../images/rollback.png") no-repeat scroll 0 0 transparent;
+    padding-left: 16px;
+}

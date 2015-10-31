@@ -1,0 +1,19 @@
+Legend:
+    + Feature
+    * Bugfix
+
+1.1
+    + Ability to assign any order from one customer to another
+    + Ability to assign multiple orders to customer using mass action
+    + Ability to rollback the assignment to any history point
+    + Ability to remember recent for assign Send Email and Overwrite Name options
+    * Fatal error with enabled compilation
+    * Mark "Is Guest" didn't removed from order
+    * Long email address isn't visible completely on the confirmation form
+    * Customer Group for Order changed when order reassigned
+    * Minor fixes and reworks
+
+1.0.1
+    * Fatal error when trying to change Transactional Email Template
+
+

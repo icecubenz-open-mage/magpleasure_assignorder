@@ -1,0 +1,55 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Info
+ * @version    master
+ * @copyright  Copyright (c) 2012-2014 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+
+
+<?php if (count($this->getExtensions())): ?>
+<table class="form-list">
+    <tbody>
+    <?php foreach ($this->getExtensions() as $extension): ?>
+    <tr>
+        <td class="mp-name info-cell">
+        <?php if ($extension->getProductUrl() && $extension->getProductName()): ?>
+            <a href="<?php echo $extension->getProductUrl(); ?>" target="_blank"><?php echo $this->htmlEscape($extension->getProductName()); ?></a>
+        <?php else: ?>
+            <span><?php echo $extension->getName(); ?></span>
+        <?php endif; ?>
+        </td>
+        <td class="mp-version info-cell"><?php echo $extension->getVersion() ?></td>
+        <td class="mp-icon info-cell"><img alt="<?php echo $extension->getStatusLabel(); ?>" src="<?php echo $this->getSkinUrl("mpinfo/images/".$extension->getStatus().".png"); ?>"></td>
+        <td class="mp-description info-cell <?php echo $extension->getStatus(); ?>"><?php echo $extension->getStatusLabel(); ?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php else: ?>
+    <?php echo $this->__("No installed extensions found. Please feel free to ask a question about our extensions at %s.", "<a href=\"mailto: support@magpleasure.com\" target=\"_blank\">support@magpleasure.com</a>"); ?>
+<?php endif; ?>
+<script type="text/javascript">
+    Fieldset.applyCollapse('mpinfo_extensions');
+</script>

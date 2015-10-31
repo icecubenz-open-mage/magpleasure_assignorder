@@ -1,0 +1,26 @@
+#mpinfo_extensions .info-cell {
+    padding: 1px 5px;
+    font-size: 14px;
+}
+
+#mpinfo_extensions .mp-description.ok {
+    color: green;
+}
+
+#mpinfo_extensions .mp-description.need-update {
+    color: #333333;
+}
+
+#mpinfo_extensions .mp-description.wrong-edition {
+    color: red;
+}
+
+#mpinfo_extensions .mp-description {
+    font-style: italic;
+}
+
+#mpinfo_extensions .mp-name {
+    font-size: 14px;
+
+}
+

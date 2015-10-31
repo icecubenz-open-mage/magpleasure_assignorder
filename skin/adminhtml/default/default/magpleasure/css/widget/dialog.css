@@ -1,0 +1,254 @@
+.mp-dialog-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../images/grey-opacity-background.png") repeat scroll 0 0 transparent;
+
+    z-index: 10000;
+}
+
+
+.mp-dialog-loader, .mp-dialog-loader-container, .mp-dialog-loader-wrapper {
+    height: 60px;
+    width: 160px;
+}
+
+.mp-dialog-loader {
+    z-index: 10003;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+
+.mp-dialog-loader-wrapper {
+    position: relative;
+}
+
+.mp-dialog-loader-container .ajax-loager {
+    float: left;
+    height: 48px;
+    margin-left: 6px;
+    margin-top: 6px;
+    width: 48px;
+    background: url("../../images/big-ajax-loader.gif") repeat scroll 50% 50% transparent;
+}
+
+.mp-dialog-loader-container .loader-message span {
+    color: #C4C1BC;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 20px;
+}
+.mp-dialog-loader-container .loader-message {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.mp-dialog-loader-container {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+
+    background: url("../../images/block-bkg-fill.png") repeat-x scroll 0 0 #FFFFFF;
+    border: 2px solid #C4C1BC;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    -webkit-box-shadow: 0px 0px 7px -2px #333333;
+    -moz-box-shadow: 0px 0px 7px -2px #333333;
+    box-shadow: 0px 0px 7px -2px #333333;
+}
+
+.mp-dialog-container {
+    z-index: 10002;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+
+.mp-dialog-wrapper {
+    position: relative;
+}
+
+.mp-dialog-content {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+
+    text-align: center;
+
+    background: url("../../images/block-bkg-fill.png") repeat-x scroll 0 0 #FFFFFF;
+    border: 2px solid #C4C1BC;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    -webkit-box-shadow: 0px 0px 7px -2px #333333;
+    -moz-box-shadow: 0px 0px 7px -2px #333333;
+    box-shadow: 0px 0px 7px -2px #333333;
+}
+
+.fixed {
+    clear: both;
+}
+
+.mp-dialog-content .dialog-content {
+    padding: 20px;
+}
+
+.mp-dialog-content .dialog-buttons.a-left { text-align: left; }
+.mp-dialog-content .dialog-buttons.a-right { text-align: right; }
+.mp-dialog-content .dialog-buttons {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.mp-dialog-content .dialog-buttons button.button {
+    margin: 0 5px;
+}
+
+.mp-dialog-content .dialog-after-buttons, .mp-dialog-content .dialog-before-buttons, .mp-dialog-content .dialog-left, .mp-dialog-content .dialog-right {
+    text-align: left;
+}
+
+.mp-dialog-content .dialog-left {
+    float: left;
+    margin-right: 15px;
+}
+.mp-dialog-content .dialog-center {
+    float: left;
+}
+
+.mp-dialog-content .dialog-right {
+    float: left;
+    margin-left: 15px;
+}
+
+.mp-dialog-message {
+    text-align: left;
+}
+
+
+/*new styles*/
+
+.mp-dialogs-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    display: none;
+
+}
+
+.mp-overlay_modal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: absolute;
+    opacity: .6;
+    z-index: 1001;
+    display: block;
+
+}
+
+.mp-dialog_contents {
+    z-index: 1002;
+    top: 5%;
+    height: 580px;
+    width: 650px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+
+    background: url("../../images/block-bkg-fill.png") repeat-x scroll 0 0 #FFFFFF;
+    border: 2px solid #C4C1BC;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    -webkit-box-shadow: 0px 0px 7px -2px #333333;
+    -moz-box-shadow: 0px 0px 7px -2px #333333;
+    box-shadow: 0px 0px 7px -2px #333333;
+
+}
+
+.mp-dialog_contents * {
+    text-align: left;
+}
+
+
+.mp-modal-footer {
+    padding: 10px 0px 10px;
+    bottom: 2px;
+    margin-top: 15px;
+    border-top: 1px solid #E5E5E5;
+    position: absolute;
+    width: 100%;
+    display: block;
+}
+
+.mp-modal-header {
+    min-height: 12px;
+    padding: 15px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.dialog-header {
+    background-color: #EEE;
+}
+
+.mp-modal-header .mp-close {
+    margin-top: -2px;
+}
+
+.mp-close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #FFF;
+    opacity: .4;
+
+}
+
+button.mp-close {
+    padding: 0;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    -webkit-appearance: none;
+}
+
+.mp-content-form {
+    margin: 20px;
+}
+
+
+.mp-modal-header h3 {
+    margin: 0 0 0;
+    float: left;
+}
+
+.mp-dialog_contents .mp-dialog-content {
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    position: static;
+    text-align: left !important;
+}

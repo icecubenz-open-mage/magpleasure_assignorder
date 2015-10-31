@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <!-- We have no other possibility to display extra options in the HEAD -->
+            <action method="setTemplate">
+                <name>magpleasure/page/head.phtml</name>
+            </action>
+            <block type="magpleasure/adminhtml_page_extrahead" name="extra_head" as="extra_head"
+                   template="magpleasure/page/extrahead.phtml"/>
+        </reference>
+        <reference name="before_body_end">
+            <block type="magpleasure/adminhtml_page_bodyend" name="mp_before_body_end" as="mp_before_body_end"
+                   template="magpleasure/page/bodyend.phtml"/>
+        </reference>
+    </default>
+
+    <magpleasure_default>
+        <!-- Use this handle to push data to every page -->
+    </magpleasure_default>
+
+    <browser_js_fix>
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>magpleasure/adminhtml/browser-fix.js</name>
+            </action>
+        </reference>
+    </browser_js_fix>
+
+    <apply_common_js>
+        <update handle="magpleasure_common_js"/>
+    </apply_common_js>
+
+    <magpleasure_common_js>
+        <reference name="head">
+            <action method="addJs">
+                <script>magpleasure/common.js</script>
+            </action>
+        </reference>
+    </magpleasure_common_js>
+
+    <magpleasure_adminhtml_common_js>
+        <reference name="head">
+            <action method="addJs">
+                <script>magpleasure/adminhtml/common.js</script>
+            </action>
+        </reference>
+    </magpleasure_adminhtml_common_js>
+
+    <apply_lodash>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/lodash/lodash.min.js</script></action>
+        </reference>
+    </apply_lodash>
+
+    <apply_moment>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/moment/moment.min.js</script></action>
+        </reference>
+    </apply_moment>
+
+    <apply_moment_locale>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/moment/moment-with-locales.min.js</script></action>
+        </reference>
+    </apply_moment_locale>
+
+    <apply_jquery>
+        <reference name="extra_head">
+            <action method="addSafeJs">
+                <alias>jQuery</alias>
+                <script>magpleasure/libs/jquery/jquery-1.8.2.min.js</script>
+            </action>
+        </reference>
+    </apply_jquery>
+
+    <apply_jquery_2>
+        <reference name="extra_head">
+            <action method="addSafeJs">
+                <alias>jQuery</alias>
+                <script>magpleasure/libs/jquery/jquery-2.1.3.min.js</script>
+            </action>
+            <action method="addSafeJs">
+                <alias>jQuery.migrateWarnings</alias>
+                <script>magpleasure/libs/jquery/jquery-migrate-1.2.1.min.js</script>
+            </action>
+        </reference>
+    </apply_jquery_2>
+
+    <apply_jquery_easing>
+        <update handle="apply_jquery"/>
+        <reference name="extra_head">
+            <action method="addSafeJs">
+                <alias>jQuery.easing</alias>
+                <script>magpleasure/libs/jquery/easing/jquery.easing.1.3.js</script>
+            </action>
+        </reference>
+    </apply_jquery_easing>
+
+    <apply_jquery_fitvids>
+        <update handle="apply_jquery"/>
+        <reference name="extra_head">
+            <action method="addSafeJs">
+                <alias>jQuery.fn.fitVids</alias>
+                <script>magpleasure/libs/jquery/fitvids/jquery.fitvids.js</script>
+            </action>
+        </reference>
+    </apply_jquery_fitvids>
+
+    <apply_jquery_ui>
+        <update handle="apply_jquery"/>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <script>magpleasure/libs/jquery/ui/css/jquery-ui-1.9.1.magento.css</script>
+            </action>
+        </reference>
+        <reference name="extra_head">
+            <action method="addSafeJs">
+                <alias>jQuery.ui</alias>
+                <script>magpleasure/libs/jquery/ui/jquery-ui-1.9.1.custom.min.js</script>
+            </action>
+        </reference>
+    </apply_jquery_ui>
+
+    <apply_lightbox>
+        <reference name="head">
+            <action method="addCss">
+                <script>magpleasure/css/thumbnail.css</script>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <script>magpleasure/libs/lightbox/css/lightbox.css</script>
+            </action>
+            <action method="addJs">
+                <script>magpleasure/libs/lightbox/js/lightbox.js</script>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="adminhtml/template" name="magpleasure.product.thumbnail.wrapper"
+                   as="magpleasure_product_thumbnail_wrapper"
+                   template="magpleasure/grid/column/renderer/product/thumbnail/wrapper.phtml"/>
+        </reference>
+    </apply_lightbox>
+
+    <apply_jquery_select2>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>magpleasure/libs/select2/magento/select2.css</name>
+            </action>
+        </reference>
+        <reference name="extra_head">
+            <action method="addSafeJs">
+                <alias>jQuery.fn.select2</alias>
+                <script>magpleasure/libs/select2/select2.js</script>
+            </action>
+        </reference>
+    </apply_jquery_select2>
+
+    <apply_dropdown>
+        <update handle="apply_jquery_select2"/>
+    </apply_dropdown>
+
+    <apply_ajax_dropdown>
+        <update handle="apply_jquery_select2"/>
+    </apply_ajax_dropdown>
+
+    <apply_ajax_tags>
+        <update handle="apply_jquery_select2"/>
+    </apply_ajax_tags>
+
+    <apply_ajax_form>
+        <update handle="apply_common_js"/>
+        <update handle="apply_jquery"/>
+        <update handle="apply_jquery_ui"/>
+        <reference name="head">
+            <action method="addJs">
+                <script>magpleasure/adminhtml/widget/ajax/form.js</script>
+            </action>
+        </reference>
+    </apply_ajax_form>
+
+    <apply_form_tree_field>
+        <update handle="apply_common_js"/>
+        <update handle="apply_jquery"/>
+        <update handle="apply_jquery_ui"/>
+        <reference name="head">
+            <action method="addJs">
+                <script>magpleasure/adminhtml/widget/form/tree.js</script>
+            </action>
+            <action method="addCss">
+                <script>magpleasure/css/form/element/tree.css</script>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>magpleasure/css/form/element/ie_tree.css</name>
+                <params/>
+                <if>lt IE 9</if>
+            </action>
+            <action method="setCanLoadExtJs">
+                <flag>1</flag>
+            </action>
+        </reference>
+    </apply_form_tree_field>
+
+    <apply_angularjs_ie_fix>
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>magpleasure/libs/angularjs/components/ie-fix/json3.min.js</name>
+                <params/>
+                <if>lte IE 8</if>
+            </action>
+        </reference>
+    </apply_angularjs_ie_fix>
+
+    <apply_angularjs>
+        <update handle="apply_angularjs_ie_fix"/>
+        <reference name="extra_head">
+            <action method="setAngularLoaded">
+                <value>1</value>
+            </action>
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/core/angular.min.js</script>
+            </action>
+        </reference>
+    </apply_angularjs>
+
+    <apply_angular_sanitize>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/core/angular-sanitize.min.js</script>
+            </action>
+        </reference>
+    </apply_angular_sanitize>
+
+    <apply_directive_bind_html_unsafe>
+        <update handle="apply_angular_sanitize"/>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/utils/sanitize/ng-bind-html-unsafe.js</script>
+            </action>
+            <action method="addDirective">
+                <name>ngBindHtmlUnsafe</name>
+                <class>ngBindHtmlUnsafeDirective</class>
+            </action>
+        </reference>
+    </apply_directive_bind_html_unsafe>
+
+    <apply_directive_column_editor>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/common/ng-column-editor.js</script>
+            </action>
+            <action method="addDirective">
+                <name>ngColumnEditor</name>
+                <class>ngColumnEditorDirective</class>
+            </action>
+        </reference>
+    </apply_directive_column_editor>
+
+    <apply_directive_show_required>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/common/ng-show-required.js</script>
+            </action>
+            <action method="addDirective">
+                <name>ngShowRequired</name>
+                <class>ngShowRequiredDirective</class>
+            </action>
+        </reference>
+    </apply_directive_show_required>
+
+    <apply_angular_common_directives>
+        <update handle="apply_angularjs"/>
+        <update handle="apply_directive_column_editor"/>
+        <update handle="apply_directive_show_required"/>
+    </apply_angular_common_directives>
+
+    <apply_angularjs_route>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/core/angular-route.min.js</script>
+            </action>
+        </reference>
+    </apply_angularjs_route>
+
+    <apply_angularjs_resource>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addRelation">
+                <relation>ngResource</relation>
+            </action>
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/core/angular-resource.min.js</script>
+            </action>
+        </reference>
+    </apply_angularjs_resource>
+
+    <apply_angularjs_touch>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addRelation">
+                <relation>ngTouch</relation>
+            </action>
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/core/angular-touch.min.js</script>
+            </action>
+        </reference>
+    </apply_angularjs_touch>
+
+    <apply_angularjs_animate>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addRelation">
+                <relation>ngAnimate</relation>
+            </action>
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/core/angular-animate.min.js</script>
+            </action>
+        </reference>
+    </apply_angularjs_animate>
+
+    <apply_angular_ui_router>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addRelation">
+                <relation>ui.router</relation>
+            </action>
+            <action method="addExtraJs">
+                <script>js/magpleasure/libs/angularjs/core/angular-ui-router.js</script>
+            </action>
+        </reference>
+    </apply_angular_ui_router>
+
+    <apply_angular_oifile>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/utils/files/oi.file.js</script>
+            </action>
+        </reference>
+    </apply_angular_oifile>
+
+    <apply_angulr_oifile>
+        <update handle="apply_angular_oifile"/>
+    </apply_angulr_oifile>
+
+    <apply_angular_safe_variables>
+        <reference name="extra_head">
+            <action method="setAngularParseSymbols">
+                <startSymbol>{{{</startSymbol>
+                <endSymbol>}}}</endSymbol>
+            </action>
+        </reference>
+    </apply_angular_safe_variables>
+
+    <apply_file_image>
+        <update handle="apply_file_upload"/>
+    </apply_file_image>
+
+    <apply_file_upload>
+        <update handle="apply_common_js"/>
+        <update handle="apply_angular_oifile"/>
+        <update handle="apply_angular_safe_variables"/>
+        <update handle="apply_glyphicons_filetypes"/>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/modules/ajax/file/upload.js</script>
+            </action>
+            <action method="addRelation">
+                <name>com.magpleasure.file.upload</name>
+            </action>
+            <action method="addTemplate">
+                <alias>magpleasure/file/upload.html</alias>
+                <path>magpleasure/system/config/form/element/file/upload/template.phtml</path>
+                <block>magpleasure/system_entity_form_element_file_upload_render_template</block>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addCss"><script>magpleasure/css/form/element/file_upload.css</script></action>
+        </reference>
+
+    </apply_file_upload>
+
+    <apply_glyphicons>
+        <reference name="head">
+            <action method="addCss">
+                <style>magpleasure/vendor/glyphicons/css/glyphicons.css</style>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>magpleasure/vendor/glyphicons/css/glyphicons-ie7-fix.css</name>
+                <params/>
+                <if>lte IE 7</if>
+            </action>
+        </reference>
+    </apply_glyphicons>
+
+    <apply_glyphicons_filetypes>
+        <reference name="head">
+            <action method="addCss">
+                <style>magpleasure/vendor/glyph_filetypes/css/filetypes.css</style>
+            </action>
+        </reference>
+    </apply_glyphicons_filetypes>
+
+    <apply_transliteration>
+        <reference name="head">
+            <action method="addJs">
+                <script>magpleasure/adminhtml/transliteration.js</script>
+            </action>
+            <action method="addCss">
+                <script>magpleasure/css/transliteration.css</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="magpleasure/adminhtml_transliteration" name="magpleasure.transliteration"
+                   as="magpleasure_transliteration" template="magpleasure/transliteration.phtml"/>
+        </reference>
+    </apply_transliteration>
+
+    <apply_base64>
+        <reference name="head">
+            <action method="addJs">
+                <script>magpleasure/libs/webtoolkit/base64.js</script>
+            </action>
+        </reference>
+    </apply_base64>
+
+    <apply_tinymce>
+        <reference name="extra_head">
+            <action method="addExtraJs"><script>magpleasure/libs/tinymce/tinymce.min.js</script></action>
+        </reference>
+    </apply_tinymce>
+
+    <apply_angularjs_tinymce>
+        <update handle="apply_tinymce"/>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/utils/tinymce/tinymce.js</script>
+            </action>
+        </reference>
+    </apply_angularjs_tinymce>
+
+    <magpleasure_widget_dialog>
+        <reference name="head">
+            <action method="addCss"><script>magpleasure/css/widget/dialog.css</script></action>
+        </reference>
+        <reference name="content">
+            <block type="magpleasure/template" name="magpleasure.widget.dialog.loader" as="widget.dialog.loader"
+                template="magpleasure/widget/dialog/loader.phtml"/>
+        </reference>
+    </magpleasure_widget_dialog>
+
+    <apply_angularjs_draggable>
+        <update handle="apply_jquery"/>
+        <update handle="apply_angularjs"/>
+        <reference name="extra_head">
+            <action method="addRelation">
+                <relation>ngDraggable</relation>
+            </action>
+            <action method="addExtraJs">
+                <script>magpleasure/libs/angularjs/components/directives/draggable/ng-draggable.js</script>
+            </action>
+        </reference>
+    </apply_angularjs_draggable>
+</layout>

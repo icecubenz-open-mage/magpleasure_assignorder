@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <magpleasure translate="label" module="mpinfo">
+            <label>MagPleasure Extensions</label>
+            <sort_order>300</sort_order>
+        </magpleasure>
+    </tabs> 
+	<sections>
+		<mpinfo module="mpinfo" translate="label">
+			<label>Info Dashboard</label>
+			<tab>magpleasure</tab>
+			<frontend_type>text</frontend_type>
+            <class>mpinfo-section</class>
+			<sort_order>10000</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>0</show_in_website>
+			<show_in_store>0</show_in_store>
+			<groups>
+                <extensions translate="label">
+                    <label>Installed Magpleasure Extensions</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>mpinfo/system_config_form_fieldset_mpinfo_extensions</frontend_model>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                </extensions>
+ 			</groups>
+		</mpinfo>
+	</sections>
+</config>

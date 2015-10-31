@@ -1,0 +1,110 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Assignorder
+ * @version    master
+ * @copyright  Copyright (c) 2012 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+    <div class="entry-edit">
+        <fieldset>
+            <ul class="note-list">
+                <?php foreach ($this->getHistory() as $item): ?>
+                    <li>
+                        <strong><?php echo $item->getAssignTime(); ?></strong>
+                        <span class="separator">|</span>
+                        <strong><?php if ($item->getIsRollback()): ?>
+                                <?php echo $this->__("Rollback"); ?>
+                            <?php else: ?>
+                                <?php $name = $item->getCustomer()->getName(); ?>
+                                <?php $url = $item->getCustomerUrl(); ?>
+                                <?php echo $this->__("Assigned to %s", "<a href=\"{$url}\" target=\"_blank\">{$name}</a>"); ?>
+                            <?php endif; ?></strong>
+                        <?php if ($item->getIsNotified()): ?>
+                            <br />
+                            <small><?php echo $this->__("Customer"); ?> <strong class="subdue">
+                                    <?php echo $this->__("Notified"); ?>
+                                    <img width="16" height="16" alt="" src="<?php echo $this->getSkinUrl('images/ico_success.gif'); ?>">
+                                </strong></small>
+
+                        <?php endif; ?>
+                        <?php if ($item->canRollback()): ?>
+                            <br/>
+                            <br/>
+                            <?php echo $this->getRollbackButtonHtml(); ?>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </fieldset>
+    </div>
+<?php if ($item->canRollback()): ?>
+    <script type="text/javascript">
+        var templatePattern =
+            '<div class="assignorder-dialog">' +
+                '<div class="assignorder-message">' +
+                '<div class="order"><span title="<?php echo $this->__("Order: %s", "#{{increment_id}}"); ?>"><?php echo $this->__("Order: %s", "#{{increment_id}}"); ?></span></div>' +
+                '<div class="arrow rollback">&nbsp;</div>' +
+                '<div class="customer"><span class="left-hover"></span><span class="name" title="{{customer_name}}">{{customer_name}}</span><br/><span class="email" title="{{customer_email}}">{{customer_email}}</span><span class="right-hover"></span></div>' +
+                '<div class="fixed"></div>' +
+                '</div>' +
+                '<div class="assignorder-checkboxes" >' +
+                '<form id="assignorder-form" action="<?php echo $this->getRollbackUrl(); ?>" method="POST">' +
+                '<input type="hidden" class="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>">' +
+                '</form>' +
+                '</div>' +
+                '</div>';
+
+        var templateMessage = new Template(templatePattern, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', ""));
+
+        var rollbackOrder = function () {
+            var data = {
+                'order_id': '<?php echo $this->getOrderId(); ?>',
+                'increment_id': '<?php echo $this->getIncrementId(); ?>',
+                'customer_name': '<?php echo $this->getCustomerName(); ?>',
+                'customer_email': '<?php echo $this->getCustomerEmail(); ?>'
+            };
+            var message = templateMessage.evaluate(data);
+            Dialog.confirm(message, {
+                className: "magento",
+                id: "mp_assignorder_dialog",
+                width: 390,
+                height: 165,
+                title: '<?php echo $this->__("Confirmation"); ?>',
+                destroyOnClose: true,
+                closable: true,
+                draggable: true,
+                okLabel: '<?php echo $this->__("Rollback Order"); ?>',
+                cancelLabel: '<?php echo $this->__("Cancel"); ?>',
+                onOk: function (event) {
+
+                    $$('#mp_assignorder_dialog_content button.ok_button, #mp_assignorder_dialog_content input.ok_button').each(function(el){
+                        el.disabled = true;
+                        el.addClassName('disabled');
+                    });
+                    $('assignorder-form').submit();
+                }
+            });
+        };
+    </script>
+<?php endif; ?>

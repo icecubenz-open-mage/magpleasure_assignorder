@@ -1,0 +1,3 @@
+input.input-text.loading, textarea.loading {
+    background: url("../images/ui-autocomplete-loader.gif") no-repeat scroll 100% 1px #FFFFFF;
+}

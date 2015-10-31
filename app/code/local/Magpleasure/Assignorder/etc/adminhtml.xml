@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <assignorder>
+                                        <title>Magpleasure - Assign Order to Customer</title>
+                                    </assignorder>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <sales translate="title" module="sales">
+                        <children>
+                            <order translate="title">
+                                <children>
+                                    <actions translate="title">
+                                        <children>
+                                            <assignorder translate="title"><title>Assign to Customer</title></assignorder>
+                                        </children>
+                                    </actions>
+                                </children>
+                            </order>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

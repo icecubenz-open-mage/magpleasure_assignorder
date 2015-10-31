@@ -1,0 +1,106 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+								<html>
+								<head>
+									<title>Assign Order to Customer</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+								dt{font-weight: bold;}
+								PRE{
+								background-color:#F9F9F9 !important;
+								border:1px dashed #2F6FAB !important;
+								padding:1em !important;
+								}								
+							</style></head><body><table align="right">
+<tr>
+<td> <table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Assign_Order_to_Customer"><span class="tocnumber">1</span> <span class="toctext">Assign Order to Customer</span></a></li>
+<li class="toclevel-1"><a href="#Features"><span class="tocnumber">2</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-1"><a href="#Installation"><span class="tocnumber">3</span> <span class="toctext">Installation</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Backup_your_data"><span class="tocnumber">3.1</span> <span class="toctext">Backup your data</span></a></li>
+<li class="toclevel-2"><a href="#Disable_Compilation"><span class="tocnumber">3.2</span> <span class="toctext">Disable Compilation</span></a></li>
+<li class="toclevel-2"><a href="#Enable_all_Types_of_Cache"><span class="tocnumber">3.3</span> <span class="toctext">Enable all Types of Cache</span></a></li>
+<li class="toclevel-2"><a href="#Download_and_unzip_the_package"><span class="tocnumber">3.4</span> <span class="toctext">Download and unzip the package</span></a></li>
+<li class="toclevel-2"><a href="#Once_the_package_is_unpacked.2C_go_into_the_unpacked_directory"><span class="tocnumber">3.5</span> <span class="toctext">Once the package is unpacked, go into the unpacked directory</span></a></li>
+<li class="toclevel-2"><a href="#Additional_installation_steps"><span class="tocnumber">3.6</span> <span class="toctext">Additional installation steps</span></a></li>
+<li class="toclevel-2"><a href="#Refresh_Store_Cache"><span class="tocnumber">3.7</span> <span class="toctext">Refresh Store Cache</span></a></li>
+<li class="toclevel-2"><a href="#That.27s_done"><span class="tocnumber">3.8</span> <span class="toctext">That's done</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Configuration"><span class="tocnumber">4</span> <span class="toctext">Configuration</span></a></li>
+<li class="toclevel-1"><a href="#Troubleshooting"><span class="tocnumber">5</span> <span class="toctext">Troubleshooting</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</td></tr></table>
+<a name="Assign_Order_to_Customer" id="Assign_Order_to_Customer"></a><h1> <span class="mw-headline">Assign Order to Customer</span></h1>
+<p><b>Version 1.1</b>
+</p><p>Assign Order to Customer - is a tool that allows you to assign orders from Guest or Customer to another customer.
+</p>
+<a name="Features" id="Features"></a><h1> <span class="mw-headline">Features</span></h1>
+<ul><li> Ability to assign guest order to any registered customer
+</li><li> Ability to assign any order from one customer to another
+</li><li> Ability to assign multiple orders to customer using mass actiion
+</li><li> Ability to view a history of assigned guest orders
+</li><li> Ability to rollback the assignment to any history point
+</li><li> Order Assignment email notification to customer and administrator 
+</li><li> Easy 2-minutes installation
+</li><li> Free support
+</li><li> Meets Magento programming practices for most versions and customizations compatibility
+</li></ul>
+<a name="Installation" id="Installation"></a><h1> <span class="mw-headline">Installation</span></h1>
+<p>Before you start, we would like to point out that if you are not confident performing the installation yourself, you should let the team of Magpleasure Ltd. do it. People who developed the extension would be the best choice and they usually offer this service for a small fee. See <a href="http://www.magpleasure.com/installation-service.html" class="external free" title="http://www.magpleasure.com/installation-service.html" rel="nofollow">http://www.magpleasure.com/installation-service.html</a>.
+</p>
+<a name="Backup_your_data" id="Backup_your_data"></a><h3> <span class="mw-headline">Backup your data</span></h3>
+<p>Make a Backup copy of the files and database for your Magento store.
+</p>
+<a name="Disable_Compilation" id="Disable_Compilation"></a><h3> <span class="mw-headline">Disable Compilation</span></h3>
+<p>If you have compilation enabled, please disable it. Installing extension with enabled compilation will inevitably lead to problems in the front end or the backend. This can be corrected, but would require an expert help. So to avoid it, temporary disable the compilation.
+</p>
+<a name="Enable_all_Types_of_Cache" id="Enable_all_Types_of_Cache"></a><h3> <span class="mw-headline">Enable all Types of Cache</span></h3>
+<p>If you disable the cache, then turn it on and refresh it. It is best to install extensions to the store, when no one except you have access to it during that time, because installation process can begin before all extensions files are loaded. This may lead to some problems.
+</p>
+<a name="Download_and_unzip_the_package" id="Download_and_unzip_the_package"></a><h3> <span class="mw-headline">Download and unzip the package</span></h3>
+<p>Download and unzip the extension package from the website where you bought it from. On our site you can get this package from <b>My Downloadable Products</b> in the customer area.
+</p>
+<a name="Once_the_package_is_unpacked.2C_go_into_the_unpacked_directory" id="Once_the_package_is_unpacked.2C_go_into_the_unpacked_directory"></a><h3> <span class="mw-headline">Once the package is unpacked, go into the unpacked directory</span></h3>
+<p>Upload files to the server. Upload app, js and skin folders to the server using an FTP client. If you are using a modified theme or a custom template, you will need to make an additional copy of the directory <i>app/design/frontend/default/default</i> to <i>app/design/frontend/&lt;YOUR_PACKAGE&gt;/&lt;YOUR_THEME&gt;</i>.
+</p><p>After that copy <i>skin/frontend/default/default</i> to <i>skin/frontend/&lt;YOUR_PACKAGE&gt;/&lt;YOUR_THEME&gt;</i>.
+</p><p>Depending on the extension function, some folders may not exist. In this case, they do not need to be copied.
+</p>
+<a name="Additional_installation_steps" id="Additional_installation_steps"></a><h3> <span class="mw-headline">Additional installation steps</span></h3>
+<p>Some extensions require you to make additional modifications to the source files of your store. Find the Installation section in the readme.html file, which comes with each extension. If any, here you would find any additional modifications.
+</p>
+<a name="Refresh_Store_Cache" id="Refresh_Store_Cache"></a><h3> <span class="mw-headline">Refresh Store Cache</span></h3>
+<p>Unless you refresh the store cache, the extension will not be installed properly. Go to <b>System</b> → <b>Cache Management</b>, and click <b>Flush Cache Storage</b>. The cache is cleared and the extension will be installed to the store after refreshing of any page.
+</p>
+<a name="That.27s_done" id="That.27s_done"></a><h3> <span class="mw-headline">That's done</span></h3>
+<p>The extension is installed to your store and you can start configuring it if you need.
+If you were using compilation, you can enable it now.
+</p>
+<a name="Configuration" id="Configuration"></a><h1> <span class="mw-headline">Configuration</span></h1>
+<p>After installation you have the ability to customize customer email notifications. To do this, go to <b>System</b>-&gt;<b>Configuration</b>-&gt;<b>Assign Order to Customer</b>. Here you can enable the notification of the assigned order, select the Email Template and choose to receive a copy of the email that is sent to customer.
+</p><p>For store administrators who are allowed to assign guest orders to customers, you need to enable the permission <b>Assign to Customer</b> under <b>Sales</b>-&gt;<b>Order</b> role permissions group. 
+</p>
+<a name="Troubleshooting" id="Troubleshooting"></a><h1> <span class="mw-headline">Troubleshooting</span></h1>
+<dl><dt>After the extension installation the store gives an error, or blank page, or suggests to start Magento installation procedure.
+</dt><dd> Change the owner of the extracted extension files to the web server user and set 775 permissions on them. Clear the store cache and try again.
+</dd></dl>
+<dl><dt>There is no <i>MagPleasure extensions</i> under my configuration section, or having the extension tab clicked I get a blank page, or <i>Access Denied</i> error.
+</dt><dd> Clear the store cache, browser cookies, logout and login again.
+</dd></dl>
+<dl><dt>I've set up everything correctly, inserted the HTML code but there is nothing on that page.
+</dt><dd> Clear the store cache, clear your browser cache and domain cookies and refresh the page.
+</dd></dl>
+<dl><dt>My configuration changes do not appear on the store.
+</dt><dd> Clear the store cache, clear your browser cache and domain cookies and refresh the page.
+</dd></dl>
+<p><br />
+</p>
+<hr />
+<center>
+<p>You can always find the latest version of the software, full documentation, demos, screenshots and reviews at <a href="http://www.magpleasure.com" class="external free" title="http://www.magpleasure.com" rel="nofollow">http://www.magpleasure.com</a><br />
+License agreement: <a href="http://www.magpleasure.com/LICENSE.txt" class="external free" title="http://www.magpleasure.com/LICENSE.txt" rel="nofollow">http://www.magpleasure.com/LICENSE.txt</a><br />
+<b>Copyright &copy; 2011-2013 MagPleasure Ltd. <a href="http://www.magpleasure.com" class="external free" title="http://www.magpleasure.com" rel="nofollow">http://www.magpleasure.com</a></b>
+</p>
+</center>
+<p><br />
+</p></body></html>

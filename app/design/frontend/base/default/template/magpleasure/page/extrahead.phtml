@@ -1,0 +1,113 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Common
+ * @version    master
+ * @copyright  Copyright (c) 2012-2015 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+
+/** @var  Magpleasure_Common_Block_Page_Extrahead $this */
+?>
+
+<?php if ($this->hasSafeScripts()): ?>
+    <script type="text/javascript">
+    //<![CDATA[
+    <?php foreach($this->getSafeScripts() as $alias => $scriptSrc): ?>
+    if (<?php echo $this->getAliasFilter($alias); ?>){
+        document.write('<scr'+'ipt src="<?php echo $scriptSrc; ?>"></scr'+'ipt>');
+    }
+    <?php endforeach; ?>
+    //]]>
+    </script>
+<?php endif; ?>
+
+<?php if ($this->hasExtraScripts()): ?>
+    <?php foreach ($this->getExtraScripts() as $script): ?>
+    <script type="text/javascript" src="<?php echo $script; ?>"></script>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<?php if ($this->getAngularLoaded()): ?>
+
+    <script type="text/javascript">
+    //<![CDATA[
+    var mpCommonAngular = angular.module('com.magpleasure.common', <?php echo $this->getRelationsJson(); ?>, function ($httpProvider) {
+
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $httpProvider.defaults.transformRequest = [function (data) {
+            return Object.toQueryString(data);
+        }];
+    });
+
+    <?php if ($this->isCustomParseSymbols()): ?>
+    mpCommonAngular
+        .config(function($interpolateProvider){
+            $interpolateProvider.startSymbol('<?php echo $this->getStartSymbol(); ?>').endSymbol('<?php echo $this->getEndSymbol(); ?>');
+        }
+    );
+    <?php endif; ?>
+
+    <?php if ($this->hasDirectives()): ?>
+    mpCommonAngular.directive(<?php echo $this->getDirectivesJson(); ?>);
+    <?php endif; ?>
+    <?php if ($this->hasFilters()): ?>
+    mpCommonAngular.filter(<?php echo $this->getFiltersJson(); ?>);
+    <?php endif; ?>
+    <?php if ($this->hasFactories()): ?>
+    mpCommonAngular.factory(<?php echo $this->getFactoriesJson(); ?>);
+    <?php endif; ?>
+    <?php if ($this->hasControllers()): ?>
+    mpCommonAngular.controller(<?php echo $this->getControllersJson(); ?>);
+    <?php endif; ?>
+    <?php if ($this->hasConfigs()): ?>
+    mpCommonAngular.config(<?php echo $this->getConfigsJson(); ?>);
+    <?php endif; ?>
+
+    //]]>
+    </script>
+
+    <!--[if IE 7]>
+    <script type="text/javascript">
+        var doc = document.body;
+        doc.setAttribute('id', 'ng-app');
+        mpCommonAngular.config(function($sceProvider) {
+            // Completely disable SCE to support IE7.
+            $sceProvider.enabled(false);
+        });
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+    //<![CDATA[
+    angular.element(document).ready(function () {
+        var doc = document.body;
+        if (doc && !$(doc).hasClassName('ng-scope')) {
+            angular.bootstrap(doc, ['com.magpleasure.common']);
+        }
+    });
+
+    //]]>
+    </script>
+
+    <?php echo $this->getChildHtml(); ?>
+<?php endif; ?>

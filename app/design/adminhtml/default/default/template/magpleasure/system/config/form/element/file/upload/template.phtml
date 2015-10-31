@@ -1,0 +1,56 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Common
+ * @version    master
+ * @copyright  Copyright (c) 2012-2015 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+
+<div class="mp-file-upload-container">
+
+    <input id="{{config.html_id}}" class="input-file {{config.class}}" ng-class="{'required-file':getRequired(),'field-ready':hasValue()}"
+           ng-disabled="hasFile() || showProgress()" type="file" name="{{config.attribute_name}}_file[]"
+           oi-file="options"
+        />
+
+    <input type="hidden" id="{{config.html_id}}_hidden" name="{{config.attribute_name}}" value="{{file.value}}"/>
+    <input type="hidden" name="delete_{{$index}}_[]" value="{{d_value}}" ng-repeat="d_value in delete track by $index"/>
+
+    <div class="mp-file-progress-container" ng-if="showProgress()">
+        <div class="mp-file-progress-bar" style="width: {{file.progress}}%;"></div>
+    </div>
+
+    <div class="mp-file-error-container" ng-if="hasError()">
+        <div style="" class="validation-advice">{{file.error}}</div>
+    </div>
+
+    <div class="mp-file-thumbnail" ng-if="hasFile()" >
+        <a class="image {{file.file_type}}" href="{{file.url}}" ng-class="{'filetype': !file.is_image}" target="_blank">
+            <img ng-if="file.is_image"  src="{{file.thumbnail_url}}"/>
+        </a>
+        <?php echo $this->getRemoveButtonHtml(); ?>
+    </div>
+
+    <div class="fixed"></div>
+</div>

@@ -1,0 +1,13 @@
+.mp-common-image {
+    margin: 1px;
+    border: 2px solid #C4C1BC;
+    overflow: hidden;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.mp-common-image:hover {
+    border-color: #7D7A75;
+}

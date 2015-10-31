@@ -1,0 +1,64 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Common
+ * @version    master
+ * @copyright  Copyright (c) 2012-2015 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+
+/** @var $this Magpleasure_Common_Block_Widget_Dialog */
+?>
+<?php $formId = 'form_'.$this->getUniqId(); ?>
+<div class="dialog-content">
+    <div id="mp-dialog-message" class="mp-dialog-message"></div>
+    <form onsubmit="if (<?php echo $this->getJsObjectName(); ?>Form.validator && <?php echo $this->getJsObjectName(); ?>Form.validator.validate()){ <?php echo $this->getJsObjectName(); ?>.save(this); } return false;" id="<?php echo $formId; ?>" action="<?php echo $this->getPostAction(); ?>" method="post" enctype="multipart/form-data">
+        <?php if ($leftHtml = $this->getLeftHtml()): ?>
+        <div class="dialog-left"><?php echo $leftHtml; ?></div>
+        <?php endif; ?>
+        <?php
+            $beforeButtonsHtml = $this->getBeforeButtonHtml();
+            $afterButtonsHtml = $this->getAfterButtonHtml();
+            $buttonHtml = $this->getButtonHtml();
+        ?>
+        <?php if ($beforeButtonsHtml || $afterButtonsHtml || $buttonHtml): ?>
+        <div class="dialog-center">
+            <?php if ($beforeButtonsHtml): ?>
+            <div class="dialog-before-buttons"><?php echo $beforeButtonsHtml; ?></div>
+            <?php endif; ?>
+            <?php if ($buttonHtml): ?>
+            <div class="dialog-buttons a-<?php echo $this->getButtonsAlign(); ?>"><?php echo $buttonHtml; ?></div>
+            <?php endif; ?>
+            <?php if ($afterButtonsHtml): ?>
+            <div class="dialog-after-buttons"><?php echo $afterButtonsHtml; ?></div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+        <?php if ($rightHtml = $this->getRightHtml()): ?>
+        <div class="dialog-right"><?php echo $rightHtml; ?></div>
+        <?php endif; ?>
+        <div class="fixed"></div>
+    </form>
+</div>
+<script type="text/javascript">
+    <?php echo $this->getJsObjectName(); ?>Form = new VarienForm('<?php echo $formId; ?>');
+</script>

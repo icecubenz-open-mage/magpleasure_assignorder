@@ -1,0 +1,91 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Common
+ * @version    master
+ * @copyright  Copyright (c) 2014 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+
+
+<?php if ($this->getGridController()): ?>
+    <script type="text/javascript">
+        //<![CDATA[
+        mpCommonAngular
+            .controller('<?php echo $this->getGridController();?>', function ($scope, $http) {
+                $scope.columns = <?php echo $this->getColumnsList(); ?>;
+                $scope.views = <?php echo  Mage::getModel('magpleasure/grid_pager_views')->toJson(); ?>;
+                $scope.options = <?php echo  Zend_Json::encode($this->getOptions()); ?>;
+                ControllerGrid($scope, $http);
+                if (! $scope.$root.grids){
+                    $scope.$root.grids = {};
+                }
+                $scope.$root.grids['<?php echo $this->getUid(); ?>'] = $scope;
+
+            })
+        ;
+        //]]>
+    </script>
+<?php endif; ?>
+
+
+<style type="text/css">
+
+    .mp-grid-container {
+        overflow: auto;
+        border: 1px solid #CBD3D4;
+        margin: 1px;
+        width: 98%;
+    }
+
+    /*to do set as option*/
+    .mp-grid table.border td{
+        background: inherit !important;
+    }
+
+</style>
+
+
+<div id="<?php echo $this->getUid(); ?>">
+    <div
+        <?php if ($this->getGridController()): ?>ng-controller="<?php echo $this->getGridController(); ?>"<?php endif; ?>>
+        <?php echo $this->getBeforeGridHtml(); ?>
+        <?php echo $this->getLayout()->getBlock('magpleasure.grid.navigator')->toHtml(); ?>
+        <div class="mp-grid-container">
+            <div class="grid mp-grid">
+                <table cellspacing="0" class="data border">
+                    <?php echo $this->getLayout()->getBlock('magpleasure.grid.columns')->toHtml(); ?>
+                    <tfoot><?php echo $this->getFooterHtml(); ?></tfoot>
+                    <tbody class="scroll-content-grid">
+                    <?php echo $this->getLayout()->getBlock('magpleasure.grid.loader')->toHtml(); ?>
+                    <tr ng-repeat="record in records" ng-class="{even: !($index%2), odd: ($index%2)}" ng-show="record.recordNumber>0">
+                        <td ng-repeat="column in columns" ng-column-editor  ng-style="{width: column.width}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <?php echo $this->getAfterGridHtml(); ?>
+    </div>
+</div>
+

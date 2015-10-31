@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_system_config_index>
+        <reference name="head">
+            <action method="addCss"><styles>mpinfo/css/styles.css</styles></action>
+        </reference>
+        <reference name="content">
+            <block type="mpinfo/adminhtml_wrapper" name="mp.info.wrapper.index" as="mp_info_wrapper_index" />
+        </reference>
+    </adminhtml_system_config_index>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addCss"><styles>mpinfo/css/styles.css</styles></action>
+        </reference>
+        <reference name="content">
+            <block type="mpinfo/adminhtml_wrapper" name="mp.info.wrapper.edit" as="mp_info_wrapper_edot" />
+        </reference>
+    </adminhtml_system_config_edit>
+</layout>

@@ -1,0 +1,67 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Common
+ * @version    master
+ * @copyright  Copyright (c) 2012-2015 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+
+<?php /** @var Magpleasure_Common_Block_System_Entity_Form_Element_Dropdown_Render $this */ ?>
+
+<?php
+if(Mage::app()->getRequest()->getControllerName() == 'catalog_product_action_attribute') {
+    $attributeName = "attributes[{$this->getName()}]";
+} else {
+    $attributeName = $this->getName();
+}
+?>
+
+<div id="<?php echo $this->getHtmlId(); ?>_container" class="mp_dropdown_container">
+    <?php $values = $this->getValues(); ?>
+    <select style="width: 280px;"
+            class=" select"
+            name="<?php echo $attributeName; ?>"
+            id="<?php echo $this->getHtmlId(); ?>"
+            <?php if ($this->getCanUseDefaultValue() || $this->getCanUseWebsiteValue() || $this->getDisabled()): ?>
+                disabled
+            <?php endif; ?> >
+    <?php if (count($values)): ?>
+        <?php foreach ($values as $option): ?>
+        <option<?php if ($this->getValue() == $option['value']): ?> selected="selected"<?php endif; ?> value="<?php echo $option['value']; ?>"><?php echo $option['label']; ?></option>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    </select>
+    <div style="clear: both;"/>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php if (!$this->isAjax()): ?>
+    document.observe("dom:loaded", function(){
+    <?php endif; ?>
+        jQuery( "#<?php echo $this->getHtmlId(); ?>" ).select2(<?php echo $this->getParamsJson(); ?>);
+    <?php if (!$this->isAjax()): ?>
+    });
+    <?php endif; ?>
+    //]]>
+</script>
