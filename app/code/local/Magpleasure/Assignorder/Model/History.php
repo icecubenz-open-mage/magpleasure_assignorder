@@ -26,7 +26,7 @@
  * @license    http://www.magpleasure.com/LICENSE-CE.txt
  */
 
-class Magpleasure_Assignorder_Model_History extends Magpleasure_Common_Model_Abstract
+class Magpleasure_Assignorder_Model_History extends Mage_Core_Model_Abstract
 {
     protected $_order = null;
     protected $_details = null;
