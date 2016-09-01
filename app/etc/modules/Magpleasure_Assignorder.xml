@@ -4,6 +4,7 @@
         <Magpleasure_Assignorder>
             <active>true</active>
             <codePool>local</codePool>
-        <edition>CE</edition></Magpleasure_Assignorder>
+            <edition>CE</edition>
+        </Magpleasure_Assignorder>
     </modules>
 </config>
