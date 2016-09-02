@@ -1,0 +1,14 @@
+# Magpleasure_Assignorder
+app/code/local/Magpleasure/Assignorder                          app/code/local/Magpleasure/Assignorder
+
+app/design/adminhtml/default/default/layout/assignorder.xml     app/design/adminhtml/default/default/layout/assignorder.xml
+app/design/adminhtml/default/default/template/assignorder       app/design/adminhtml/default/default/template/assignorder
+
+skin/adminhtml/default/default/assignorder                      skin/adminhtml/default/default/assignorder
+
+js/prototype/windows/themes/*                                   js/prototype/windows/themes
+
+app/locale/en_US/*.csv                                          app/locale/en_US
+app/locale/en_US/template/email/*                               app/locale/en_US/template/email/
+
+app/etc/modules/Magpleasure_Assignorder.xml                     app/etc/modules/Magpleasure_Assignorder.xml
