@@ -77,8 +77,13 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Grid extends Mage_Adminht
             if ($customerId = $order->getCustomerId()) {
                 $collection->addFieldToFilter('entity_id', array('neq' => $customerId));
             }
+            if (Mage::getSingleton('customer/config_share')->isWebsiteScope()) {
+                $collection->addFieldToFilter('website_id', array('eq' => $order->getStore()->getWebsiteId()));
+            }
         }
-
+        else if ($websiteId = Mage::getSingleton('adminhtml/session')->getAssignorderWebsiteId()) {
+            $collection->addFieldToFilter('website_id', array('eq' => $websiteId));
+        }
 
         $this->setCollection($collection);
 

@@ -67,9 +67,27 @@ class Magpleasure_Assignorder_Adminhtml_Assignorder_OrderController extends Mage
             return;
         }
 
+        // If customers are unique per website then ensure that orders are only assigned from the customer's website
+        Mage::getSingleton('adminhtml/session')->unsAssignorderWebsiteId();
+        if ($orderIds && Mage::getSingleton('customer/config_share')->isWebsiteScope()) {
+            $collection = Mage::getResourceModel('sales/order_collection')->addFieldToFilter('entity_id', array('in' => $orderIds));
+            $websiteId = NULL;
+            foreach ($collection as $order) { /* @var $order Mage_Sales_Model_Order */
+                if ($websiteId === NULL) {
+                    $websiteId = $order->getStore()->getWebsiteId();
+                }
+                else if ($websiteId !== $order->getStore()->getWebsiteId()) {
+                    Mage::getSingleton('adminhtml/session')->addError($this->__('All orders to assign must be from the same website.'));
+                    $websiteId = NULL;
+                    break;
+                }
+            }
+            if ($websiteId) {
+                Mage::getSingleton('adminhtml/session')->setAssignorderWebsiteId($websiteId);
+            }
+        }
         $this->_initAction()
             ->renderLayout();
-
     }
 
     public function customerGridAction()
@@ -87,6 +105,7 @@ class Magpleasure_Assignorder_Adminhtml_Assignorder_OrderController extends Mage
         $overwriteName = $this->getRequest()->getPost('overwrite_name') ? 1 : 0;
         $orderIds = $this->getRequest()->getParam('order_ids');
         $orderIds = explode(",", $orderIds);
+        $websiteId = Mage::getSingleton('adminhtml/session')->getAssignorderWebsiteId(TRUE);
 
         $session = Mage::getSingleton('adminhtml/session');
         $session->setData('assignorder_overwrite_name', $overwriteName);
@@ -105,6 +124,13 @@ class Magpleasure_Assignorder_Adminhtml_Assignorder_OrderController extends Mage
                 if ($customerId && $orderId) {
 
                     $order = $this->_helper()->_order()->getOrder($orderId);
+                    if (Mage::getSingleton('customer/config_share')->isWebsiteScope()) {
+                        // Confirm all order belong to same website as customer
+                        if ($websiteId != $order->getStore()->getWebsiteId()) {
+                            $error++;
+                            continue;
+                        }
+                    }
                     $order->assignToCustomer($customerId, $overwriteName, $sendEmail);
 
                     $success++;
