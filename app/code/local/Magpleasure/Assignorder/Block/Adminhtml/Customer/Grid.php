@@ -50,9 +50,11 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Grid extends Mage_Adminht
 
     public function getOrder()
     {
+        if ( ! empty($this->_order)) { return $this->_order; }
         if ($orderId = $this->getRequest()->getParam('order_id')) {
 
             if ($order = $this->_helper()->_order()->getOrder($orderId)) {
+                $this->_order = $order;
                 return $order;
             }
         }
@@ -182,6 +184,9 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Grid extends Mage_Adminht
 
     public function getGridUrl()
     {
+        if ($this->getOrder()) {
+            return $this->getUrl('*/*/customerGrid', array('order_id' => $this->getOrder()->getId()));
+        }
         return $this->getUrl('*/*/customerGrid');
     }
 }
