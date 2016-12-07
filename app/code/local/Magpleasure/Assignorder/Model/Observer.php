@@ -53,13 +53,13 @@ class Magpleasure_Assignorder_Model_Observer
         $block = $event->getBlock();
 
         # Order View
-        if ($block && ($block->getNameInLayout() == 'sales_order_edit')) {
+        if ($block && ($block->getNameInLayout() == 'sales_order_edit') && $this->_helper()->isAllowed()) {
             if ($block instanceof Mage_Adminhtml_Block_Sales_Order_View) {
 
                 /** @var Magpleasure_Assignorder_Model_Order $order */
                 $order = $this->_helper()->_order()->getOrder();
 
-                if ($order->isGuestOrder() && $this->_helper()->isAllowed()) {
+                if ($order->isGuestOrder()) {
 
                     $url = $this->_getBackendUrlModel()->getUrl('adminhtml/assignorder_order/customerSelect', array(
                         'order_id' => $order->getId(),
@@ -90,7 +90,7 @@ class Magpleasure_Assignorder_Model_Observer
 
     public function massActionOption($observer)
     {
-        if (!$this->_helper()->extEnabled()) {
+        if (!$this->_helper()->extEnabled() || !$this->_helper()->isAllowed()) {
             return;
         }
 

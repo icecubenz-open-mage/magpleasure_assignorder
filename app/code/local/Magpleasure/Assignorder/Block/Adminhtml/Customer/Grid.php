@@ -50,9 +50,11 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Grid extends Mage_Adminht
 
     public function getOrder()
     {
+        if ( ! empty($this->_order)) { return $this->_order; }
         if ($orderId = $this->getRequest()->getParam('order_id')) {
 
             if ($order = $this->_helper()->_order()->getOrder($orderId)) {
+                $this->_order = $order;
                 return $order;
             }
         }
@@ -77,8 +79,13 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Grid extends Mage_Adminht
             if ($customerId = $order->getCustomerId()) {
                 $collection->addFieldToFilter('entity_id', array('neq' => $customerId));
             }
+            if (Mage::getSingleton('customer/config_share')->isWebsiteScope()) {
+                $collection->addFieldToFilter('website_id', array('eq' => $order->getStore()->getWebsiteId()));
+            }
         }
-
+        else if ($websiteId = Mage::getSingleton('adminhtml/session')->getAssignorderWebsiteId()) {
+            $collection->addFieldToFilter('website_id', array('eq' => $websiteId));
+        }
 
         $this->setCollection($collection);
 
@@ -177,6 +184,9 @@ class Magpleasure_Assignorder_Block_Adminhtml_Customer_Grid extends Mage_Adminht
 
     public function getGridUrl()
     {
+        if ($this->getOrder()) {
+            return $this->getUrl('*/*/customerGrid', array('order_id' => $this->getOrder()->getId()));
+        }
         return $this->getUrl('*/*/customerGrid');
     }
 }
