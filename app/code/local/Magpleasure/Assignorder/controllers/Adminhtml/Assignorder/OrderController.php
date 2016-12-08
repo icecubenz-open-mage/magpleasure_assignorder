@@ -59,10 +59,12 @@ class Magpleasure_Assignorder_Adminhtml_Assignorder_OrderController extends Mage
 
     public function customerSelectAction()
     {
-        $orderIds = $this->getRequest()->getPost('order_ids');
-        $orderId = $this->getRequest()->getParam('order_id');
-
-        if (!$orderIds && !$orderId){
+        if ($orderId = $this->getRequest()->getParam('order_id')) {
+            $orderIds = array($orderId);
+        } else {
+            $orderIds = $this->getRequest()->getPost('order_ids');
+        }
+        if ( ! $orderIds){
             $this->_redirect('adminhtml/sales_order/index');
             return;
         }
