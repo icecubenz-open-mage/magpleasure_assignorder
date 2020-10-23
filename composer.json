@@ -1,0 +1,15 @@
+{
+    "name": "icecubenz-open-mage/magpleasure-assignorder",
+    "license": "Magpleasure Ltd. EULA",
+    "type": "magento-module",
+    "description": "Assign Order to Customer - is a tool that allows you to assign any order to any customer",
+    "homepage": "https://github.com/icecubenz-open-mage/magpleasure_assignorder",
+    "authors": [
+        {
+            "name": "Magpleasure Ltd"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
